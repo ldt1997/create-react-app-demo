@@ -1,5 +1,3 @@
-"use strict";
-
 const fs = require("fs");
 const isWsl = require("is-wsl");
 const path = require("path");
@@ -455,10 +453,10 @@ module.exports = function(webpackEnv) {
             },
             {
               test: lessRegex,
-              exclude: sassModuleRegex,
+              exclude: lessModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 2,
+                  importLoaders: 1,
                   sourceMap: isEnvProduction && shouldUseSourceMap
                 },
                 "less-loader"
@@ -468,7 +466,7 @@ module.exports = function(webpackEnv) {
               test: lessModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 2,
+                  importLoaders: 1,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: true,
                   getLocalIdent: getCSSModuleLocalIdent
