@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
-import { LocaleProvider } from "antd";
+import { ConfigProvider } from "antd";
 import zhCN from "antd/lib/locale-provider/zh_CN";
 import BaseLayout from "./components/layouts/BaseLayout";
 import App from "./pages/app/App";
@@ -17,11 +17,11 @@ class Router extends Component {
   );
   render() {
     return (
-      <LocaleProvider locale={zhCN}>
+      <ConfigProvider locale={zhCN}>
         <HashRouter>
           <BaseLayout>{this.renderRouter()}</BaseLayout>
         </HashRouter>
-      </LocaleProvider>
+      </ConfigProvider>
     );
   }
 }
