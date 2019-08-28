@@ -5,6 +5,24 @@ import "./GoodsCardList.less";
 const { Item } = List;
 
 class GoodsCardList extends Component {
+  renderItem = ({ img, name, star, price, time }) => {
+    return (
+      <Item className="itemContainer">
+        <Card className="card">
+          <img src={img} alt="" className="cardImg" />
+          <div className="cardContent">
+            <h3 className="title">{name || "-"}</h3>
+            <Rate disabled defaultValue={star || 0} style={{ fontSize: 14 }} />
+            <br />
+            <span>{`配送費  ¥${price || "-"}`}</span>
+            <br />
+            <span>{`配送时间  ${time || "-"} 分钟`}</span>
+          </div>
+        </Card>
+      </Item>
+    );
+  };
+
   render() {
     const { data = [] } = this.props;
     return (
@@ -12,29 +30,7 @@ class GoodsCardList extends Component {
         <List
           grid={{ gutter: 16, column: 4 }}
           dataSource={data}
-          renderItem={item => (
-            <Item className="itemContainer">
-              <Card className="card">
-                <img
-                  src="http://my.yjbys.com/uploads/company/logo/7484461.jpg"
-                  alt=""
-                  className="img"
-                />
-                <div className="cardContent">
-                  <h3>{item.title}</h3>
-                  <p>
-                    <Rate
-                      disabled
-                      defaultValue={item.star}
-                      style={{ fontSize: 14 }}
-                    />
-                  </p>
-                  <p>{`配送費  ¥${item.price}`}</p>
-                  <p>{`配送时间  ${item.time} 分钟`}</p>
-                </div>
-              </Card>
-            </Item>
-          )}
+          renderItem={item => this.renderItem(item)}
         />
       </div>
     );

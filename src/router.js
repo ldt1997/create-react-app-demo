@@ -6,6 +6,7 @@ import BaseLayout from "./components/layouts/BaseLayout";
 import App from "./pages/app/App";
 import HomePage from "./pages/home/HomePage";
 import MyOrderPage from "./pages/myorder/MyOrderPage";
+import "./mock/home";
 
 class Router extends Component {
   renderRouter = () => (

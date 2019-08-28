@@ -1,13 +1,14 @@
-import "whatwg-fetch";
+import axios from "axios";
 
 /**
  * 獲取店家列表
  * @param id 请求ID
  * @returns
  */
-export const getList = ({ id }) =>
-  fetch("/api/home/list", {
-    method: "post",
-    body: JSON.stringify({ id }),
-    headers: { Accept: "application/json", "Content-Type": "application/json" }
-  });
+export const fetchList = ({ id }) => axios.post("/api/home/list", id);
+
+/**
+ * 獲取菜单
+ * @returns
+ */
+export const fetchTab = () => axios.get("/api/home/tab");
